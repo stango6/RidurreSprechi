@@ -47,7 +47,7 @@ public class ServiceProdotto {
 
 	//restituisce lista con tutti i prodotti, sia edibili che non
 	public List<Prodotto> tuttiProdotti(){
-		if(prodotti.isEmpty());
+		if(prodotti.isEmpty())
 		aggiornaProdotti();
 		aggiornaScandenza();
 		System.out.println("LISTA PRODOTTI:" + prodotti);;
@@ -193,6 +193,7 @@ public class ServiceProdotto {
 			}
 		}
 	}
+
 
 	//per ottenere il numero di alimenti sprecati
 	public int nSprecati() {
