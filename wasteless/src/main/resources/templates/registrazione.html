@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registrazione.css">
+    <script src="js/registrazione.js" defer></script>
+    <title>WasteLess - Registrazione</title>
+</head>
+<body>
+<header class="header">
+    <div class="header__content">
+        <a class="header__logo" href="#">
+            <strong>WasteLess</strong>
+        </a>
+        <ul class="header__menu">
+            <li><a href="#"></a></li>
+            <strong><li><a href="#Chi siamo?"></a></li></strong>
+            <strong><li><a href="#Notizie"></a></li></strong>
+            <strong><li><a href="#Lavora con noi"></a></li></strong>
+            <strong><li><a href="#Contatto"></a></li></strong>
+        </ul>
+        <div class="header__quick">
+            <Strong><a href=""></a></Strong>
+            <div class="icon-hamburger">
+            </div>
+        </div>
+    </div>
+</header>
+<video class="video-bg" src="css/paesaggio.mp4" autoplay muted loop></video>
+<section>
+    <div class="login-box" >
+
+        <form name="registrazione" action="/register" th:object="${utente}" method="post">
+
+            <div class="azienda">
+                <label for="ruolo">Ruolo</label>
+                <select field="${utente.ruolo}" id="ruolo" name="ruolo" required onchange="handleRuoloChange()">
+                    <option value=""></option>
+                    <option value="azienda">Azienda</option>
+                    <option value="privato">Privato</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="nome" name="nome" th:field="${utente.nome}" required>
+                <label id="labelNome" for="nome">Nome</label>
+            </div>
+
+            <div class="input-box" id="cognomeField">
+                <input type="text" th:field="${utente.cognome}" id="cognome" name="cognome" required>
+                <label id="labelCognome" for="cognome">Cognome</label>
+            </div>
+
+            <div class="input-box">
+                <input type="email" th:field="${utente.email}" id="email" name="email"  required>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" th:field="${utente.password}" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="confermaPassword" name="confermaPassword" required>
+                <label for="confermaPassword">Conferma Password</label>
+            </div>
+
+            <div>
+                <input type="submit" value="Registrati">
+            </div>
+
+            <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login WasteLess</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header class="header">
+    <div class="header__content">
+        <a class="header__logo" href="/">
+            <strong>WasteLess</strong>
+        </a>
+        <ul class="header__menu">
+            <li><a href="#"></a></li>
+            <strong><li><a href="#Chi siamo?"></a></li></strong>
+            <strong><li><a href="#Notizie"></a></li></strong>
+            <strong><li><a href="#Lavora con noi"></a></li></strong>
+            <strong><li><a href="#Contatto"></a></li></strong>
+        </ul>
+        <div class="header__quick">
+            <Strong><a href=""></a></Strong>
+            <div class="icon-hamburger">
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<video class="video-bg" src="css/paesaggio.mp4" autoplay muted loop></video>
+
+<section>
+    <div class="login-box">
+        <form action="/login" method="post">
+            <h2>Login</h2>
+
+            <div class="input-box">
+
+                <span class="icon"><ion-icon name="mail" required=""></ion-icon></span>
+                <input type="text" id="email" name="email"><br>
+                <label for="email">Email</label>
+
+            </div>
+
+            <div class="input-box">
+
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" id="password" name="password"> <br>
+                <label>Password</label>
+
+            </div>
+
+
+
+
+            <input type="submit" id="login" value="  Accedi  ">
+            <h2> <br>Non sei registrato?</h2>
+            <br> <hr> <br>
+            <input type="submit" value="Registrami" formaction="/formregistrazione" formmethod="get">
+        </form>
+    </div>
+</section>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

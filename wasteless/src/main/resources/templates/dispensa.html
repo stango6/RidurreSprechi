@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dispensa.css">
+    <script src="js/dispensa.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>WasteLess - Elenco prodotti</title>
+</head>
+
+<body>
+
+<section class="content">
+    <nav>
+        <a class="header__logo" href="#">
+            <strong>WasteLess</strong>
+        </a>
+        <a href="/" class="status pending">
+            <p>Logout</p>
+        </a>
+    </nav>
+    <main>
+
+
+        <div class="head-title">
+            <div class="left">
+                <h1>Dispensa</h1>
+
+            </div>
+        </div>
+        <ul class="box-info">
+            <li>
+                <i class='bx bx-food-menu'></i>
+                <span class="text">
+						<h3 th:text="${nEdibili}"></h3>
+						<p>Prodotti Disponibili</p>
+					</span>
+            </li>
+            <li>
+                <i class='bx bx-x'></i>
+                <span class="text">
+						<h3 th:text="${nSprecati}"></h3>
+						<p>Cibo Sprecato</p>
+					</span>
+            </li>
+        </ul>
+        <div id="login_form" class="table-data">
+            <div class="contenuto order">
+                <div id="modal-add" class="modal">
+                    <div id="modalNew" class="modal-content">
+                        <span id="closeAdd" class="close">&times;</span>
+                        <h2>Nuovo prodotto</h2>
+                        <form action="/addProdotto" id="addForm" method="get">
+
+                            <label for="addNome">Nome:</label><br>
+                            <input type="text" id="addNome" name="nome" placeholder="Insersci il nome">
+                            <br>
+
+                            <label for="addDataScadenza">Data scadenza:</label><br>
+                            <input type="date" id="addDataScadenza" name="dataScadenza">
+                            <br>
+
+                            <label for="addQuantita">Quantita:</label><br>
+                            <input type="text" id="addQuantita" name="quantita" placeholder="Insersci la quantita">
+                            <br>
+
+                            <label for="addDescrizione">Descrizione:</label>
+                            <textarea name="descrizione" id="addDescrizione" cols="28" rows="5"></textarea>
+
+                            <label for="addAlimento">È un alimento?</label><br>
+                            <input type="checkbox" id="addAlimento" name="alimento" value="true">
+                            <br>
+
+                            <label for="addPrezzo">Prezzo:</label><br>
+                            <input type="text" id="addPrezzo" name="prezzo" placeholder="Insersci il prezzo del prodotto">
+                            <br>
+
+                            <br><br>
+                            <div class="flex">
+                                <input type="submit" value="Aggiungi" class="btn-download">
+                                <input type="reset" value="Pulisci" class="status pending">
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+
+
+                <div id="modal-sell" class="modal">
+                    <div id="sellItem" class="modal-content">
+                        <span id="closeSell" class="close">&times;</span>
+                        <h2>Vendi prodotto</h2>
+                        <form action="/sellProdotto" method="post">
+                            <input type="hidden" id="sellId" name="id">
+
+                            <input id="sellNome" name="nome" disabled>
+
+                            <input type="hidden" id="sellDataScadenza" name="dataScadenza">
+                            <br>
+
+                            <label for="modNome">Inserisci quantità venduto:</label><br>
+                            <input type="text" id="sellQuantita" name="quantita">
+
+                            <input type="hidden" id="sellAlimento" name="alimento" value="true">
+
+                            <input type="hidden" id="sellPrezzo" name="prezzo" placeholder="Insersci il prezzo del prodotto">
+                            <br>
+
+                            <input type="hidden" id="sellStato" name="stato">
+
+                            <input type="hidden" id="sellIdUtente" name="idUtente">
+
+                            <br><br>
+
+                            <div class="flex">
+                                <input type="submit" value="Vendi" class="btn-download">
+                                <input type="reset" value="Pulisci" class="status pending">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <div id="modal-mod" class="modal">
+                    <div id="modItem" class="modal-content">
+                        <span id="closeMod" class="close">&times;</span>
+                        <h2>Modifica prodotto</h2>
+                        <form action="/modProdotto" method="get">
+                            <input type="hidden" id="modId" name="id">
+                            <br>
+
+                            <label for="modNome">Nome:</label><br>
+                            <input type="text" id="modNome" name="nome" placeholder="Insersci il nome">
+                            <br>
+
+                            <label for="modDataScadenza">Data scadenza:</label><br>
+                            <input type="date" id="modDataScadenza" name="dataScadenza">
+                            <br>
+
+                            <label for="modQuantita">Quantita:</label><br>
+                            <input type="text" id="modQuantita" name="quantita" placeholder="Insersci la quantita">
+                            <br>
+
+                            <label for="modDescrizione">Descrizione:</label>
+                            <textarea name="descrizione" id="modDescrizione" cols="28" rows="5"></textarea>
+
+                            <label for="modAlimento">È un alimento?</label><br>
+                            <input type="checkbox" id="modAlimento" name="alimento" value="true">
+                            <br>
+
+                            <label for="modPrezzo">Prezzo:</label><br>
+                            <input type="text" id="modPrezzo" name="prezzo" placeholder="Insersci il prezzo del prodotto">
+                            <br>
+
+                            <input type="hidden" id="modStato" name="stato">
+
+                            <input type="hidden" id="modIdUtente" name="idUtente">
+                            <br>
+                            <br>
+
+                            <br><br>
+                            <div class="flex">
+                                <input type="submit" value="Modifica" class="btn-download">
+                                <input type="reset" value="Pulisci" class="status pending">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="head">
+                    <button id="modalEdibles" onclick="showEdibleProducts()" class="btn-download">Visualizza Prodotti Edibili</button>
+                    <button id="modalNotEdibles" onclick="showExpiredProducts()" class="btn-download">Visualizza prodotti scaduti</button>
+                    <button id="modalNewItem" onclick="" class="btn-download">Aggiungi Prodotto</button>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th style="display: none;">ID</th>
+                            <th>Nome</th>
+                            <th>Data di scadenza <span id="sortButton" onclick="sortProductsByExpirationDate()">▼</span></th>
+                            <th>Quantità</th>
+                            <th>Descrizione</th>
+                            <th>Prezzo</th>
+                            <th>Alimento</th>
+                            <th>Stato</th>
+                        </tr>
+                        </thead>
+                        <tbody id="elenco">
+                        <tr th:each="prodotti, iter: ${listaProdotti}">
+                            <td th:text="${prodotti.id}" style="display: none;"></td>
+                            <td th:text="${prodotti.nome}"></td>
+                            <td th:text="${prodotti.dataScadenza}"></td>
+                            <td th:text="${prodotti.quantita}" id="quantita"></td>
+                            <td th:text="${prodotti.descrizione}"></td>
+
+                            <td th:text="${prodotti.prezzo}"></td>
+                            <td>
+                                <input type="checkbox" th:checked="${prodotti.alimento}" disabled>
+                            </td>
+                            <td th:text="${prodotti.stato}"></td>
+                            <td th:text="${prodotti.idUtente}" style="display: none;"></td>
+                            <td>
+                                <button class="status completed" th:if="${ruolo == 'azienda'}" id="button-mod" th:data-id="${prodotti.id}"
+                                        th:data-nome="${prodotti.nome}" th:data-dataScadenza="${prodotti.dataScadenza}"
+                                        th:data-quantita="${prodotti.quantita}" th:data-descizione="${prodotti.descrizione}"
+                                        th:data-prezzo="${prodotti.prezzo}" th:data-alimento="${prodotti.alimento}"
+                                        th:data-stato="${prodotti.stato}" th:data-idUtente="${prodotti.idUtente}" th:onclick="modProdotto(this)"><span class="status completed">Modifica</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="status completed" th:if="${ruolo == 'azienda'}" id="button-sell" th:data-id="${prodotti.id}"
+                                        th:data-nome="${prodotti.nome}" th:data-dataScadenza="${prodotti.dataScadenza}"
+                                        th:data-quantita="${prodotti.quantita}" th:data-descizione="${prodotti.descrizione}"
+                                        th:data-prezzo="${prodotti.prezzo}" th:data-alimento="${prodotti.alimento}"
+                                        th:data-stato="${prodotti.stato}" th:data-idUtente="${prodotti.idUtente}" th:onclick="vendiProdotto(this)" >Vendi prodotto</button>
+                            </td>
+                            <td>
+                                <form action="/delProdotto" method="get">
+                                    <input type="hidden" name="id" th:value="${prodotti.id}">
+                                    <input type="submit" value="&times;" id="delete">
+                                </form>
+                            </td>
+
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <br> <br>
+
+                    <input th:if="${ruolo == 'azienda'}" type="text" id="guadagno" placeholder="" value="">
+                </div>
+            </div>
+        </div>
+    </main>
+</section>
+
+
+</body>
+
+</html>
